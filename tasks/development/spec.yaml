@@ -1,0 +1,19 @@
+version: "2.0"
+name: "hello-rust"
+repo:
+  url: "https://github.com/innuama-coder/spec-executor-testing-01.git"
+  branch: "main"
+task_dir: "tasks/development"
+executor: "claude"
+deliverables:
+  - path: "Cargo.toml"
+  - path: "src/main.rs"
+    verify: 'cargo build && cargo run | grep -Fxq "Hello, world!"'
+  - path: "tasks/development/CLAUDE.md"
+    verify: 'git diff --quiet origin/main -- tasks/development/'
+execution:
+  poll_interval_sec: 2
+  idle_timeout_sec: 30
+  max_duration_min: 5
+  max_nudge_count: 3
+  max_consecutive_escalate: 2
