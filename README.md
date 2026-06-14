@@ -1,15 +1,17 @@
-# spec-executor-testing-01 — hello-rust
+# spec-executor-testing-01 - hello-rust
 
-spec-executor 2.0 测试用例：从零构建 Rust binary crate，`cargo run` 输出 `Hello, world!`。
+Rust 入门开发型独立测试仓库。该仓库用于验证 spec-executor 是否能够驱动 Claude/Codex 在空仓库中创建 Rust binary crate，并完成最小可运行程序。
 
 ## 目录
 
-- `tasks/development/spec.yaml` — spec-executor 2.0 入口
-- `tasks/development/CLAUDE.md` / `AGENTS.md` / `PROMPT.md` — 任务包
-- `docs/DELIVERY.md` — 验收标准说明
+- `docs/PRD.md`：产品需求。
+- `docs/HLD.md`：高层设计。
+- `docs/LLD.md`：详细设计。
+- `docs/DELIVERY.md`：交付说明模板。
+- `tasks/development/`：spec-executor task package。
 
 ## 运行
 
-```
+```bash
 spec-executor run --spec tasks/development/spec.yaml --workspace ./workspace
 ```

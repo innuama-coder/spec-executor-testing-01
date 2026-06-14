@@ -1,50 +1,20 @@
-# CLAUDE.md — hello-rust (claude executor)
+# CLAUDE.md - hello-rust
 
-> Loaded by spec-executor 2.0. Copied from `tasks/development/CLAUDE.md`
-> to the worktree root during StartingExecutor. PROMPT.md is sent
-> as the first user message via `send_input`.
+## 工作协议
 
-## Mission
+你正在执行 `spec-executor-testing-01` 的 Rust 入门开发任务。请优先阅读 `docs/PRD.md`、`docs/HLD.md` 和 `docs/LLD.md`，并严格按照工作文档实现。
 
-Create a Rust binary crate from scratch. This repository has no Rust
-code as baseline — you must produce `Cargo.toml` and `src/main.rs`
-such that `cargo run` prints `Hello, world!` to standard output.
+## 任务目标
 
-## Working Agreement
+在仓库根目录创建 Rust binary crate，使 `cargo run` 输出精确文本 `Hello, world!`。
 
-- **Create** `Cargo.toml` and `src/main.rs` at the repo root.
-  The baseline has neither file.
-- **Standard library only.** No external dependencies.
-- **Do not modify** `tasks/development/`, `docs/`, `spec.yaml`,
-  `README.md`, `.gitignore`, or any file not related to the crate
-  you are creating.
-- **No `rust-toolchain.toml`.** Build with the resolved stable
-  toolchain.
-- **A single `println!("Hello, world!")` in `main`** is the target.
-  No extra prints, no `eprint!`, no command-line arguments.
+## 交付要求
 
-## Self-Verification
+- 创建 `Cargo.toml`。
+- 创建 `src/main.rs`。
+- 仅使用 Rust 标准库。
+- 不修改 `tasks/development/`、`docs/`、`README.md`、`.gitignore` 或 `spec.yaml`。
 
-Run both from the worktree root before declaring done:
-```
-cargo build
-cargo run
-```
+## 验证
 
-`cargo run` must print exactly `Hello, world!` and exit 0.
-
-## Definition of Done
-
-1. `Cargo.toml` exists and defines a binary crate.
-2. `src/main.rs` exists and prints `Hello, world!`.
-3. `cargo run` prints `Hello, world!` and exits 0.
-4. `tasks/development/` is byte-identical to the baseline
-   (verified by the spec).
-
-## Out of Scope
-
-- Tests, documentation comments, refactoring.
-- Adding a `rust-toolchain.toml`.
-- Modifying any file outside the crate you create.
-- `Cargo.lock` (it is in `.gitignore` by convention for binary
-  crates).
+运行 `cargo build` 和 `cargo run`，并在最终回复中报告结果。

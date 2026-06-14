@@ -1,27 +1,27 @@
-# PROMPT.md — hello-rust (universal first instruction)
+# PROMPT.md
 
-> Sent as the first user message to whichever executor is launched,
-> via `send_input`.
+## 任务目标
 
----
+开始执行 `hello-rust` 任务。在空仓库中创建 Rust binary crate，使 `cargo run` 输出精确文本 `Hello, world!`。
 
-Begin the **hello-rust** task.
+## 必读上下文
 
-This repository has no Rust code. Create a binary crate from scratch
-at the repo root such that `cargo run` prints `Hello, world!`.
+1. `docs/PRD.md`
+2. `docs/HLD.md`
+3. `docs/LLD.md`
+4. `CLAUDE.md` 或 `AGENTS.md`
 
-Read your working agreement: `CLAUDE.md` (claude) or `AGENTS.md` (codex)
-at the worktree root.
+## 交付物
 
-Steps:
-1. Create `Cargo.toml` and `src/main.rs`.
-2. Write `main` to print `Hello, world!`.
-3. Run `cargo build` and `cargo run`.
-4. Confirm `Hello, world!` appears, then stop. The verifier handles
-   the mechanical checks afterward.
+- `Cargo.toml`
+- `src/main.rs`
 
-Constraints (full list in your agreement file):
-- Standard library only. No external dependencies.
-- Do not touch `tasks/development/`, `docs/`, `spec.yaml`,
-  `README.md`, `.gitignore`.
-- Do not add a `rust-toolchain.toml`.
+## 验收标准
+
+- `cargo build` 成功。
+- `cargo run` 输出 `Hello, world!`。
+- 不修改 `tasks/development/`、`docs/`、`README.md`、`.gitignore` 或 `spec.yaml`。
+
+## Handoff
+
+最终回复包含修改摘要、验证命令和验证结果。

@@ -1,40 +1,19 @@
-# AGENTS.md — hello-rust (codex executor)
+# AGENTS.md - hello-rust
 
-> Loaded by spec-executor 2.0 when `executor: codex`. Copied to
-> the worktree root during StartingExecutor. PROMPT.md is sent as
-> the first user message via `send_input`.
+## 工作协议
 
-## Task
+你正在执行 `spec-executor-testing-01` 的 Rust 入门开发任务。请读取 `docs/PRD.md`、`docs/HLD.md` 和 `docs/LLD.md` 后再实现。
 
-Create a Rust binary crate from scratch. The repository has no Rust
-code as baseline — produce `Cargo.toml` and `src/main.rs` such that
-`cargo run` prints `Hello, world!` to standard output.
+## 任务目标
 
-## Constraints
+创建最小 Rust binary crate，使 `cargo run` 输出 `Hello, world!`。
 
-- Create `Cargo.toml` and `src/main.rs` at the repo root.
-- Standard library only. No external dependencies.
-- Do not modify `tasks/development/`, `docs/`, `spec.yaml`,
-  `README.md`, `.gitignore`.
-- No `rust-toolchain.toml`.
-- The final `main` body should be `println!("Hello, world!")`.
+## 约束
 
-## Self-Verification (mandatory)
+- 不引入外部依赖。
+- 不新增 `rust-toolchain.toml`。
+- 不修改任务包和工作文档。
 
-```
-cargo build
-cargo run
-```
+## 完成标准
 
-## Definition of Done
-
-1. `Cargo.toml` exists and defines a binary crate.
-2. `src/main.rs` exists and prints `Hello, world!`.
-3. `cargo run` prints `Hello, world!` and exits 0.
-4. `tasks/development/` is byte-identical to the baseline.
-
-## Out of Scope
-
-- Refactoring, comments, tests, benchmarks, examples.
-- Adding CI, README, or `LICENSE` files.
-- Switching to library + integration-test layout.
+`cargo build` 通过，`cargo run` 输出符合 PRD。

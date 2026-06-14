@@ -1,25 +1,25 @@
-# Delivery Standard — hello-rust
+# DELIVERY - hello-rust
 
-## Expected Work
+## 验收用途
 
-Create a Rust binary crate from scratch. The baseline has no Rust
-code; every file in the crate is produced by the AI.
+本文档用于人工复核 `hello-rust` 任务是否完成。执行者无需修改本文档，但最终回复必须提供与本文档一致的验收证据。
 
-## Deliverable Files
+## 交付物
 
-| File | Condition | Verification |
-|---|---|---|
-| `Cargo.toml` | must exist | existence check |
-| `src/main.rs` | must exist; prints `Hello, world!` | `cargo build && cargo run \| grep -Fxq "Hello, world!"` |
+| 交付物 | 验收要点 |
+| --- | --- |
+| `Cargo.toml` | 位于仓库根目录，声明 Rust binary crate。 |
+| `src/main.rs` | 程序入口存在，并输出精确文本 `Hello, world!`。 |
 
-## Example Passing State
+## 验收命令
 
+```bash
+cargo build
+cargo run
 ```
-$ cargo run
-Hello, world!
-```
 
-## Task Package Integrity
+## 通过标准
 
-`tasks/development/` and `docs/` must remain byte-identical to the
-baseline.
+- `cargo build` 退出码为 0。
+- `cargo run` 输出为 `Hello, world!`，不得包含额外业务文本。
+- `tasks/development/`、`docs/`、`README.md`、`.gitignore` 和 `spec.yaml` 未被修改。
