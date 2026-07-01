@@ -1,0 +1,16 @@
+{
+  "job_id": "legacy-v22-job-0001",
+  "schema_version": "2.2",
+  "owner": "spec-executor",
+  "status": "completed",
+  "agent": null,
+  "env": null,
+  "review": null,
+  "diagnostics": [
+    {
+      "code": "compat_missing_v23_projection",
+      "severity": "info",
+      "message": "Legacy 2.2 JOB does not contain 2.3 agent/env/review facts."
+    }
+  ]
+}

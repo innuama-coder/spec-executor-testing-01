@@ -1,0 +1,76 @@
+version: "2.3"
+name: "v23-resume-source-degraded"
+repo:
+  url: "https://github.com/innuama-coder/spec-executor-testing-01.git"
+  branch: "main"
+task_dir: "cases/v23-resume-source-degraded"
+executor: "claude"
+execution:
+  poll_interval_sec: 2
+  idle_timeout_sec: 30
+  max_duration_min: 8
+  max_nudge_count: 3
+  max_consecutive_escalate: 2
+  env:
+    file: "ENV"
+    required: false
+    privacy: "redacted"
+  agent:
+    id: "v23-resume-source-degraded-agent"
+    name: "v23-resume-source-degraded-agent"
+    role: "负责完成 v23-resume-source-degraded 真实任务包交付。"
+    model:
+      preference: "default"
+    instructions:
+      - "严格按任务包上下文完成任务。"
+      - "ENV 只作为进程环境变量使用，默认输出不得包含变量值。"
+      - "若存在 review items，必须在同一 JOB 内完成修复和验证。"
+    context:
+      files:
+        - "PROMPT.md"
+        - "AGENTS.md"
+        - "CLAUDE.md"
+        - "docs/PRD.md"
+        - "docs/HLD.md"
+        - "docs/LLD.md"
+        - "docs/DELIVERY.md"
+      exclude:
+        - "ENV"
+    tools:
+      allow:
+        - "shell"
+        - "apply_patch"
+      deny:
+        - "network"
+    permissions:
+      filesystem: "workspace-write"
+      network: "deny"
+      approval: "on-request"
+  review:
+    max_iterations: 2
+    items: []
+  lifecycle:
+    resume:
+      require_same_job: true
+    monitoring:
+      busy_side_effect: "observe_only"
+      source_degraded_policy: "bounded_failure"
+      screen_capture_semantic_fallback: false
+    capture:
+      default_raw_output: false
+      failure_evidence: false
+verification:
+  pass_threshold: 1
+  commands:
+    - "test -f artifacts/v23-resume-source-degraded.txt"
+    - "grep -Fq 'v23-resume-source-degraded' artifacts/v23-resume-source-degraded.txt"
+reporting:
+  format: "markdown"
+  include_evidence_refs: true
+  redact_env_values: true
+  include_handoff: true
+deliverables:
+  - path: "artifacts/v23-resume-source-degraded.txt"
+    verify: 'test -f artifacts/v23-resume-source-degraded.txt'
+  - path: "cases/v23-resume-source-degraded/docs/DELIVERY.md"
+    verify: 'test -f cases/v23-resume-source-degraded/docs/DELIVERY.md'

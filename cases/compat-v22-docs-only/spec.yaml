@@ -1,0 +1,18 @@
+version: "2.0"
+name: "compat-v22-docs-only"
+repo:
+  url: "https://github.com/innuama-coder/spec-executor-testing-01.git"
+  branch: "main"
+task_dir: "cases/compat-v22-docs-only"
+executor: "claude"
+deliverables:
+  - path: "artifacts/compat-v22-docs-only.txt"
+    verify: 'test -f artifacts/compat-v22-docs-only.txt'
+  - path: "cases/compat-v22-docs-only/docs/DELIVERY.md"
+    verify: 'test -f cases/compat-v22-docs-only/docs/DELIVERY.md'
+execution:
+  poll_interval_sec: 2
+  idle_timeout_sec: 30
+  max_duration_min: 5
+  max_nudge_count: 3
+  max_consecutive_escalate: 2
